@@ -2,11 +2,13 @@ import asyncio
 import logging
 import random
 
+
 async def coro1(a, b):
     print('coro1', a)
     await asyncio.sleep(random.uniform(0,5))
     print('coro1 ends', a)
     return a+b
+
 
 async def coro2(summ):
     print('coro2', summ)
@@ -27,8 +29,8 @@ if __name__ == '__main__':
         done, undone = loop.run_until_complete(
             asyncio.wait(group,
                          return_when=asyncio.FIRST_COMPLETED))
-        print('###Done', done)
-        print('###Undone', undone)
+        #print('###Done', done)
+        #print('###Undone', undone)
         tasks = [loop.create_task(coro2(t.result())) for t in done ]
         loop.run_until_complete(asyncio.wait(tasks))
         for task in tasks:
