@@ -25,7 +25,7 @@ urls = ['https://api.github.com/users/natenka',
         'https://httpbin.org/delay/10',
         'https://api.github.com/users/pyneng']
 loop = asyncio.get_event_loop()
-tasks = [loop.create_task(fetch(url)) for url in urls]
+tasks = [asyncio.ensure_future(fetch(url)) for url in urls]
 results = loop.run_until_complete(asyncio.gather(*tasks, return_exceptions=True))
 for task in tasks:
     if task.exception():
