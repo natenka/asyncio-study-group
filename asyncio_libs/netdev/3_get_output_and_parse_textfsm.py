@@ -44,7 +44,7 @@ if __name__ == '__main__':
         devices = yaml.load(f)
 
     loop = asyncio.get_event_loop()
-    results = loop.run_until_complete(run(devices['routers'], 'sh ip int br'))
+    results = loop.run_until_complete(run(devices, 'sh ip int br'))
     pprint(results)
     loop.close()
 
