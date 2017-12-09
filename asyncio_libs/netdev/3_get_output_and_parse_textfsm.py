@@ -6,6 +6,7 @@ import clitable
 import yaml
 import netdev
 
+#https://stackoverflow.com/questions/44345139/python-asyncio-add-done-callback-with-async-def
 
 async def send_show_commands_to_cisco(device_params, command):
     async with netdev.create(**device_params) as ssh:
