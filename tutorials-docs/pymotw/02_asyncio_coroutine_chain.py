@@ -6,6 +6,7 @@ async def outer():
     result1 = await phase1()
     print("Waiting for result from phase 2")
     result2 = await phase2(result1)
+    return result1, result2
 
 
 async def phase1():
@@ -14,7 +15,7 @@ async def phase1():
 
 async def phase2(arg):
     print("In phase2")
-    return "Result from {}".format(arg)
+    return "Result2 from {}".format(arg)
 
 event_loop = asyncio.get_event_loop()
 
